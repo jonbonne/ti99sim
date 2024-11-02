@@ -1,0 +1,36 @@
+services:
+  ti99sim:
+    image: ti99sim:latest
+    build:
+      context: .
+    devices:
+      - /dev/snd:/dev/snd   # Share the sound device with the container
+      - /dev/input/js0:/dev/input/js0   # Share the first gamepad with the container
+      - /dev/input/js1:/dev/input/js1   # Share the second gamepad with the container
+    environment:
+      - DISPLAY=${DISPLAY}
+      - TERM=xterm-256color
+      - PULSE_SERVER=unix:/run/user/1000/pulse/native
+      - XDG_RUNTIME_DIR=/run/user/1000
+      - PULSE_COOKIE=/run/pulse/cookie
+    volumes:
+      - /dev:/dev:rw
+      - /run/user/1000/pulse:/run/user/1000/pulse
+      - ~/.config/pulse/cookie:/run/pulse/cookie
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - ~/.Xauthority:/home/root/.XAuthority:rw
+      - ./roms:/opt/ti99sim/roms
+    stdin_open: true
+    tty: true
+    cap_add:
+     - SYS_NICE
+     - SYS_TIME
+    network_mode: host
+    pid: host
+    ulimits:
+      memlock: -1
+      stack: -1
+      rtprio: 99
+      rttime: -1
+    command: sleep infinity
+    privileged: true

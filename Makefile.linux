@@ -6,17 +6,17 @@ SYS_BIN   = /usr/local/bin
 INSTALL   = /usr/bin/install
 
 TARGETS   = \
-	src/sdl/ti99sim-sdl \
-	src/util/convert-ctg \
-	src/util/decode \
-	src/util/disk \
-	src/util/dumpcpu \
-	src/util/dumpgrom \
-	src/util/dumpspch \
-	src/util/list \
-	src/util/mkspch \
-	src/util/say \
-	src/console/ti99sim-console
+    src/sdl/Release/ti99sim-sdl \
+    src/util/Release/convert-ctg \
+    src/util/Release/decode \
+    src/util/Release/disk \
+    src/util/Release/dumpcpu \
+    src/util/Release/dumpgrom \
+    src/util/Release/dumpspch \
+    src/util/Release/list \
+    src/util/Release/mkspch \
+    src/util/Release/say \
+    src/console/Release/ti99sim-console
 
 SRC_DIRS = \
 	src/core \
